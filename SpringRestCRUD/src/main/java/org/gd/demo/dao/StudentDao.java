@@ -7,6 +7,8 @@ package org.gd.demo.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.gd.demo.bean.Course;
 import org.gd.demo.bean.Student;
@@ -59,10 +61,11 @@ public class StudentDao {
         return studentlist;
      }
 
-    public List<Course> getCoursesByStudentID(int studentID) {
+    public Set<Course> getCoursesByStudentID(long studentID) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        List courseList = session.createCriteria(Course.class).list();
+        Student std = session.get(Student.class,studentID);
+        Set courseList = std.getCourses();
         session.flush();
         tx.commit(); 
         return courseList;

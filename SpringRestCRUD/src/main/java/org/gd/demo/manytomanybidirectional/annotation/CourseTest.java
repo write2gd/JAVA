@@ -21,8 +21,7 @@ import javax.persistence.Table;
  *
  * @author Gouranga Das
  */
-@Entity(name = "Course")
-@Table(name = "COURSES")
+
 public class CourseTest implements Serializable {
 
     @Id

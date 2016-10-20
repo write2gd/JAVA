@@ -7,6 +7,7 @@ package org.gd.demo.controller;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import org.gd.demo.bean.Country;
 import org.gd.demo.bean.Course;
 import org.gd.demo.bean.Student;
@@ -39,8 +40,8 @@ public class StudentController {
 	}
     
         @RequestMapping(value = "/student/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public List<Course> getCoursesByStudentID(@PathVariable int id) {
-		List<Course> listOfCourses = studentService.getStudentWiseCourse(id);
+	public  Set<Course> getCoursesByStudentID(@PathVariable long id) {
+		 Set<Course> listOfCourses = studentService.getStudentWiseCourse(id);
 		return listOfCourses;
 	}
          
@@ -50,7 +51,7 @@ public class StudentController {
      * @return
      */
     @RequestMapping(value = "/students/add/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public String getAllStudents(@PathVariable String name) {
+	public String getAllStudents(@PathVariable String name ) {
 		Serializable resultStudent = studentService.saveStudent(name);
 		return "ID="+resultStudent;
 	}

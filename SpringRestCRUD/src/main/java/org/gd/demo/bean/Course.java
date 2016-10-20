@@ -1,6 +1,6 @@
 package org.gd.demo.bean;
 
-import org.gd.demo.manytomanybidirectional.annotation.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;

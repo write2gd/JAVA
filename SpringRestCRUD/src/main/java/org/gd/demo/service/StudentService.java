@@ -7,6 +7,7 @@ package org.gd.demo.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import org.gd.demo.bean.Course;
 import org.gd.demo.bean.Student;
 import org.gd.demo.dao.StudentDao;
@@ -38,8 +39,8 @@ public class StudentService {
      * @param studentID
      * @return
      */
-    public List<Course> getStudentWiseCourse(int studentID) {
-        List<Course> courses = studentDao.getCoursesByStudentID(studentID);
+    public Set<Course> getStudentWiseCourse(long studentID) {
+        Set<Course> courses = studentDao.getCoursesByStudentID(studentID);
         return courses;
     }
 
