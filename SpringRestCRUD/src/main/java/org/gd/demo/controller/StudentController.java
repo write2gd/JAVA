@@ -5,6 +5,7 @@
  */
 package org.gd.demo.controller;
 
+import java.io.Serializable;
 import java.util.List;
 import org.gd.demo.bean.Country;
 import org.gd.demo.bean.Course;
@@ -21,7 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class StudentController {
-    StudentService studentService = new StudentService();
+    private StudentService studentService;
+
+    public StudentService getStudentService() {
+        return studentService;
+    }
+
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
+    
     @RequestMapping(value = "/students", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Student> getAllStudents() {
 		List<Student> listOfStudents = studentService.getAllStudents();
@@ -32,6 +42,17 @@ public class StudentController {
 	public List<Course> getCoursesByStudentID(@PathVariable int id) {
 		List<Course> listOfCourses = studentService.getStudentWiseCourse(id);
 		return listOfCourses;
+	}
+         
+    /**
+     *
+     * @param name
+     * @return
+     */
+    @RequestMapping(value = "/students/add/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public String getAllStudents(@PathVariable String name) {
+		Serializable resultStudent = studentService.saveStudent(name);
+		return "ID="+resultStudent;
 	}
     
 }

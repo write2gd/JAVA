@@ -5,6 +5,7 @@
  */
 package org.gd.demo.dao;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.gd.demo.bean.Course;
@@ -12,13 +13,24 @@ import org.gd.demo.bean.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author dasg
  */
+@Repository
 public class StudentDao {
      private SessionFactory sessionFactory;
+     private StudentRepo studentRepo;
+
+    public StudentRepo getStudentRepo() {
+        return studentRepo;
+    }
+
+    public void setStudentRepo(StudentRepo studentRepo) {
+        this.studentRepo = studentRepo;
+    }
 
     public SessionFactory getSessionFactory() {
         return sessionFactory;
@@ -54,6 +66,15 @@ public class StudentDao {
         session.flush();
         tx.commit(); 
         return courseList;
+    }
+
+    public Serializable save(Student s) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        Serializable result = session.save(s);
+        session.flush();
+        tx.commit(); 
+        return result;
     }
     
 }

@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html ng-app="StudentDemo">
     <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Hello AngularJS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+        <script src="res/js/Student.js"></script>
     </head>
+
     <body>
-        <h1>Hello World!</h1>
+        <div ng-controller="StudentController">                  
+        <div ng-repeat="country in countries">
+            
+            <p>Country ID: {{country.id}}  Name: {{country.countryName}} Population: {{country.population}}</p>
+            
+        </div>
+        </div>
+
     </body>
 </html>

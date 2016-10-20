@@ -5,17 +5,20 @@
  */
 package org.gd.demo.service;
 
+import java.io.Serializable;
 import java.util.List;
 import org.gd.demo.bean.Course;
 import org.gd.demo.bean.Student;
 import org.gd.demo.dao.StudentDao;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author dasg
  */
+@Service
 public class StudentService {
-    StudentDao studentDao;
+    private StudentDao studentDao;
 
     public StudentDao getStudentDao() {
         return studentDao;
@@ -38,5 +41,15 @@ public class StudentService {
     public List<Course> getStudentWiseCourse(int studentID) {
         List<Course> courses = studentDao.getCoursesByStudentID(studentID);
         return courses;
+    }
+
+    public Serializable saveStudent(String name) {
+        Student s = new Student();
+        s.setStudentName(name);
+        Course c = new Course();
+        c.setCourseName("Test"+ name);
+        s.addCourse(c);
+        return studentDao.save(s);
+        
     }
 }

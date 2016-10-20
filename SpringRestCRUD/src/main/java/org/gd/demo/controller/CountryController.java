@@ -15,8 +15,8 @@ public class CountryController {
     CountryService countryService = new CountryService();
 
     @RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=application/json")
-    public String getCountries() {       
-        return "redirect:/countries";
+    public List<Country> getCountries() {       
+        return getAllCountries();
     }
 
     @RequestMapping(value = "/countries", method = RequestMethod.GET, headers = "Accept=application/json")

@@ -15,9 +15,8 @@
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
     <mvc:annotation-driven/>
-    <context:component-scan base-package="org.gd.demo" />
+    <context:component-scan base-package="org.gd.demo.*" />
     
     <bean id="hdDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName">
@@ -32,14 +31,15 @@
         </property>
     </bean>
     <bean id="hdSessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="hdDataSource"/>
+        <property name="packagesToScan" value="org.gd.demo.bean" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="format_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <!-- Use the C3P0 connection pool provider -->
                 <prop key="hibernate.c3p0.min_size">5</prop>
                 <prop key="hibernate.c3p0.max_size">20</prop>
@@ -50,17 +50,22 @@
         </property>
         <!--property name="mappingLocations" value="org.gd.demo" /-->
     </bean>
+    
     <bean id="hdTransactionManager"
-          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="hdSessionFactory"/>
     </bean>
 
     <tx:annotation-driven transaction-manager="hdTransactionManager"/>
+
     <bean id="student" class="org.gd.demo.dao.StudentDao">
         <property name="sessionFactory" ref="hdSessionFactory"/>
     </bean>
-    <bean id="studentService" class="org.gd.demo.service.StudentService">
+    <bean id="stdService" class="org.gd.demo.service.StudentService">
         <property name="studentDao" ref="student"/>        
+    </bean>
+    <bean id="studentController" class="org.gd.demo.controller.StudentController">
+        <property name="studentService" ref="stdService"/>
     </bean>
 </beans>
    
