@@ -1,7 +1,7 @@
 package org.gd.demo.controller;
 
 import java.util.List;
-import org.gd.demo.bean.Country;
+import org.gd.demo.entity.Country;
 import org.gd.demo.service.CountryService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

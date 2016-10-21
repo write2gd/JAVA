@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.gd.demo.bean.Country;
+import org.gd.demo.entity.Country;
 
 /*
  * It is just a helper class which should be replaced by database implementation.

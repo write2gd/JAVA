@@ -5,13 +5,18 @@
  */
 package org.gd.demo.dao;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
-import org.gd.demo.bean.Course;
-import org.gd.demo.bean.Student;
+import org.gd.demo.bean.CourseBean;
+import org.gd.demo.entity.Course;
+import org.gd.demo.entity.Student;
+import org.gd.demo.manytomanybidirectional.annotation.CourseTest;
+import org.gd.demo.manytomanybidirectional.annotation.StudentTest;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -61,14 +66,13 @@ public class StudentDao {
         return studentlist;
      }
 
-    public Set<Course> getCoursesByStudentID(long studentID) {
+    public Student getStudentByID(long studentID) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        Student std = session.get(Student.class,studentID);
-        Set courseList = std.getCourses();
+        Student std = session.get(Student.class,studentID);       
         session.flush();
-        tx.commit(); 
-        return courseList;
+        tx.commit();         
+        return std;
     }
 
     public Serializable save(Student s) {

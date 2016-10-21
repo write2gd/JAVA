@@ -5,7 +5,7 @@
  */
 package org.gd.demo.dao;
 
-import org.gd.demo.bean.Student;
+import org.gd.demo.entity.Student;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

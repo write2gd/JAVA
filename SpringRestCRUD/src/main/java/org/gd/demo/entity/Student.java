@@ -1,4 +1,4 @@
-package org.gd.demo.bean;
+package org.gd.demo.entity;
 
 import org.gd.demo.manytomanybidirectional.annotation.*;
 import java.io.Serializable;

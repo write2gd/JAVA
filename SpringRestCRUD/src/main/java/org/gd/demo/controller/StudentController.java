@@ -8,9 +8,9 @@ package org.gd.demo.controller;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
-import org.gd.demo.bean.Country;
-import org.gd.demo.bean.Course;
-import org.gd.demo.bean.Student;
+import org.gd.demo.bean.CourseBean;
+import org.gd.demo.bean.StudentBean;
+
 import org.gd.demo.service.StudentService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,14 +34,14 @@ public class StudentController {
     }
     
     @RequestMapping(value = "/students", method = RequestMethod.GET, headers = "Accept=application/json")
-	public List<Student> getAllStudents() {
-		List<Student> listOfStudents = studentService.getAllStudents();
+	public List<StudentBean> getAllStudents() {
+		List<StudentBean> listOfStudents = studentService.getAllStudents();
 		return listOfStudents;
 	}
     
         @RequestMapping(value = "/student/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public  Set<Course> getCoursesByStudentID(@PathVariable long id) {
-		 Set<Course> listOfCourses = studentService.getStudentWiseCourse(id);
+	public  List<CourseBean> getCoursesByStudentID(@PathVariable long id) {
+		 List<CourseBean> listOfCourses = studentService.getStudentWiseCourse(id);
 		return listOfCourses;
 	}
          

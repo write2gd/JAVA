@@ -33,7 +33,7 @@
     <bean id="hdSessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="hdDataSource"/>
-        <property name="packagesToScan" value="org.gd.demo.bean" />
+        <property name="packagesToScan" value="org.gd.demo.entity" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
