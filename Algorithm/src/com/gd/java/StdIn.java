@@ -176,8 +176,6 @@ public final class StdIn {
     }
 
     public static String[] readAllStrings() {
-        // we could use readAll.trim().split(), but that's not consistent
-        // because trim() uses characters 0x00..0x20 as whitespace
         String[] tokens = WHITESPACE_PATTERN.split(readAll());
         if (tokens.length == 0 || tokens[0].length() > 0) {
             return tokens;
