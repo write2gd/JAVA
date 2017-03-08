@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class StudentController {
+
     private StudentService studentService;
 
     public StudentService getStudentService() {
@@ -32,28 +33,28 @@ public class StudentController {
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
     }
-    
+
     @RequestMapping(value = "/students", method = RequestMethod.GET, headers = "Accept=application/json")
-	public List<StudentBean> getAllStudents() {
-		List<StudentBean> listOfStudents = studentService.getAllStudents();
-		return listOfStudents;
-	}
-    
-        @RequestMapping(value = "/student/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public  List<CourseBean> getCoursesByStudentID(@PathVariable long id) {
-		 List<CourseBean> listOfCourses = studentService.getStudentWiseCourse(id);
-		return listOfCourses;
-	}
-         
+    public List<StudentBean> getAllStudents() {
+        List<StudentBean> listOfStudents = studentService.getAllStudents();
+        return listOfStudents;
+    }
+
+    @RequestMapping(value = "/student/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public List<CourseBean> getCoursesByStudentID(@PathVariable long id) {
+        List<CourseBean> listOfCourses = studentService.getStudentWiseCourse(id);
+        return listOfCourses;
+    }
+
     /**
      *
      * @param name
      * @return
      */
     @RequestMapping(value = "/students/add/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public String getAllStudents(@PathVariable String name ) {
-		Serializable resultStudent = studentService.saveStudent(name);
-		return "ID="+resultStudent;
-	}
-    
+    public String getAllStudents(@PathVariable String name) {
+        Serializable resultStudent = studentService.saveStudent(name);
+        return "ID=" + resultStudent;
+    }
+
 }
