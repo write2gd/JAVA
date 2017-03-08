@@ -47,9 +47,9 @@ public class Heap {
 
     // print array to standard output
     private static void show(Comparable[] a) {
-        for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
-        }
+       for (Comparable a1 : a) {
+           StdOut.println(a1);
+       }
     }
 
     public static void main(String[] args) {

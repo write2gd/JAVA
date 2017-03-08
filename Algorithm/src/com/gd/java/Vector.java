@@ -27,9 +27,7 @@ public class Vector {
     public Vector(double... a) {
         d = a.length;
         data = new double[d];
-        for (int i = 0; i < d; i++) {
-            data[i] = a[i];
-        }
+        System.arraycopy(a, 0, data, 0, d);
     }
 
     public int dimension() {
@@ -107,10 +105,11 @@ public class Vector {
         return this.times(1.0 / this.magnitude());
     }
 
+    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < d; i++) {
-            s.append(data[i] + " ");
+            s.append(data[i]).append(" ");
         }
         return s.toString();
     }

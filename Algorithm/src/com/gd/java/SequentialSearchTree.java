@@ -8,6 +8,8 @@ package com.gd.java;
 /**
  *
  * @author dasg
+ * @param <Key>
+ * @param <Value>
  */
 public class SequentialSearchTree<Key, Value> {
 

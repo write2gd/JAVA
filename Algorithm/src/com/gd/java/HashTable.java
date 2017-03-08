@@ -8,6 +8,8 @@ package com.gd.java;
 /**
  *
  * @author dasg
+ * @param <Key>
+ * @param <Value>
  */
 public class HashTable<Key, Value> {
 
@@ -54,7 +56,7 @@ public class HashTable<Key, Value> {
 
     // resizes the hash table to the given capacity by re-hashing all of the keys
     private void resize(int capacity) {
-        HashTable<Key, Value> temp = new HashTable<Key, Value>(capacity);
+        HashTable<Key, Value> temp = new HashTable<>(capacity);
         for (int i = 0; i < m; i++) {
             if (keys[i] != null) {
                 temp.put(keys[i], vals[i]);
@@ -146,7 +148,7 @@ public class HashTable<Key, Value> {
     }
 
     public Iterable<Key> keys() {
-        Queue<Key> queue = new Queue<Key>();
+        Queue<Key> queue = new Queue<>();
         for (int i = 0; i < m; i++) {
             if (keys[i] != null) {
                 queue.enqueue(keys[i]);

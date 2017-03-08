@@ -5,8 +5,6 @@
  */
 package com.gd.java;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -328,7 +326,7 @@ public class BST<Key extends Comparable<Key>, Value> {
             throw new IllegalArgumentException("second argument to keys() is null");
         }
 
-        Queue<Key> queue = new Queue<Key>();
+        Queue<Key> queue = new Queue<>();
         keys(root, queue, lo, hi);
         return queue;
     }
@@ -380,8 +378,8 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     public Iterable<Key> levelOrder() {
-        Queue<Key> keys = new Queue<Key>();
-        Queue<Node> queue = new Queue<Node>();
+        Queue<Key> keys = new Queue<>();
+        Queue<Node> queue = new Queue<>();
         queue.enqueue(root);
         while (!queue.isEmpty()) {
             Node x = queue.dequeue();

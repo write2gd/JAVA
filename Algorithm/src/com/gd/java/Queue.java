@@ -12,6 +12,7 @@ import java.util.Scanner;
 /**
  *
  * @author dasg
+ * @param <Item>
  */
 public class Queue<Item> implements Iterable<Item> {
 
@@ -73,7 +74,7 @@ public class Queue<Item> implements Iterable<Item> {
      */
     public void enqueue(Item item) {
         Node<Item> oldlast = last;
-        last = new Node<Item>();
+        last = new Node<>();
         last.item = item;
         last.next = null;
         if (isEmpty()) {
@@ -108,6 +109,7 @@ public class Queue<Item> implements Iterable<Item> {
      *
      * @return the sequence of items in FIFO order, separated by spaces
      */
+    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (Item item : this) {
@@ -124,8 +126,9 @@ public class Queue<Item> implements Iterable<Item> {
      * @return an iterator that iterates over the items in this queue in FIFO
      * order
      */
+    @Override
     public Iterator<Item> iterator() {
-        return new ListIterator<Item>(first);
+        return new ListIterator<>(first);
     }
 
     // an iterator, doesn't implement remove() since it's optional
@@ -137,14 +140,17 @@ public class Queue<Item> implements Iterable<Item> {
             current = first;
         }
 
+        @Override
         public boolean hasNext() {
             return current != null;
         }
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
 
+        @Override
         public Item next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
@@ -159,6 +165,7 @@ public class Queue<Item> implements Iterable<Item> {
      * Unit tests the {@code Queue} data type.
      *
      * @param args the command-line arguments
+     * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
         Queue<Integer> queue = new Queue<>();

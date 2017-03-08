@@ -10,6 +10,8 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author dasg
+ * @param <Key>
+ * @param <Value>
  */
 public class RedBlackTree<Key extends Comparable<Key>, Value> {
 
@@ -325,7 +327,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
     } 
 
     public Iterable<Key> keys() {
-        if (isEmpty()) return new Queue<Key>();
+        if (isEmpty()) return new Queue<>();
         return keys(min(), max());
     }
 
@@ -333,7 +335,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
         if (lo == null) throw new IllegalArgumentException("first argument to keys() is null");
         if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
 
-        Queue<Key> queue = new Queue<Key>();
+        Queue<Key> queue = new Queue<>();
         keys(root, queue, lo, hi);
         return queue;
     } 
@@ -414,7 +416,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
     } 
 
     public static void main(String[] args) { 
-        RedBlackTree<String, Integer> st = new RedBlackTree<String, Integer>();
+        RedBlackTree<String, Integer> st = new RedBlackTree<>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);

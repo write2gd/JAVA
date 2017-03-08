@@ -8,6 +8,8 @@ package com.gd.java;
 /**
  *
  * @author dasg
+ * @param <Key>
+ * @param <Value>
  */
 public class HashMap<Key, Value> {
     private static final int INIT_CAPACITY = 4;
@@ -24,10 +26,10 @@ public class HashMap<Key, Value> {
         this.m = m;
         st = (SequentialSearchTree<Key, Value>[]) new SequentialSearchTree[m];
         for (int i = 0; i < m; i++)
-            st[i] = new SequentialSearchTree<Key, Value>();
+            st[i] = new SequentialSearchTree<>();
     } 
   private void resize(int chains) {
-        HashMap<Key, Value> temp = new HashMap<Key, Value>(chains);
+        HashMap<Key, Value> temp = new HashMap<>(chains);
         for (int i = 0; i < m; i++) {
             for (Key key : st[i].keys()) {
                 temp.put(key, st[i].get(key));

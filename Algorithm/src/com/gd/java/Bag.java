@@ -11,6 +11,7 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author dasg
+ * @param <Item>
  */
 public class Bag<Item> implements Iterable<Item> {
 
@@ -38,14 +39,15 @@ public class Bag<Item> implements Iterable<Item> {
 
     public void add(Item item) {
         Node<Item> oldfirst = first;
-        first = new Node<Item>();
+        first = new Node<>();
         first.item = item;
         first.next = oldfirst;
         n++;
     }
 
+    @Override
     public Iterator<Item> iterator() {
-        return new ListIterator<Item>(first);
+        return new ListIterator<>(first);
     }
 
     // an iterator, doesn't implement remove() since it's optional
@@ -57,14 +59,17 @@ public class Bag<Item> implements Iterable<Item> {
             current = first;
         }
 
+        @Override
         public boolean hasNext() {
             return current != null;
         }
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
 
+        @Override
         public Item next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
@@ -76,7 +81,7 @@ public class Bag<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Bag<String> bag = new Bag<String>();
+        Bag<String> bag = new Bag<>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             bag.add(item);

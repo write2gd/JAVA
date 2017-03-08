@@ -190,7 +190,7 @@ public final class StdIn {
     }
 
     public static String[] readAllLines() {
-        ArrayList<String> lines = new ArrayList<String>();
+        ArrayList<String> lines = new ArrayList<>();
         while (hasNextLine()) {
             lines.add(readLine());
         }

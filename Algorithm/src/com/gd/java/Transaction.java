@@ -54,6 +54,7 @@ public class Transaction implements Comparable<Transaction> {
         return String.format("%-10s %10s %8.2f", who, when, amount);
     }
 
+    @Override
     public int compareTo(Transaction that) {
         return Double.compare(this.amount, that.amount);
     }
@@ -74,6 +75,7 @@ public class Transaction implements Comparable<Transaction> {
                 && (this.when.equals(that.when));
     }
 
+    @Override
     public int hashCode() {
         int hash = 1;
         hash = 31 * hash + who.hashCode();
@@ -121,29 +123,29 @@ public class Transaction implements Comparable<Transaction> {
         a[3] = new Transaction("GD 8/22/2007 2678.40");
 
         System.out.println("Unsorted");
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        for (Transaction a1 : a) {
+            System.out.println(a1);
         }
         System.out.println();
 
         System.out.println("Sort by date");
         Arrays.sort(a, new Transaction.WhenOrder());
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        for (Transaction a1 : a) {
+            System.out.println(a1);
         }
         System.out.println();
 
         System.out.println("Sort by customer");
         Arrays.sort(a, new Transaction.WhoOrder());
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        for (Transaction a1 : a) {
+            System.out.println(a1);
         }
         System.out.println();
 
         System.out.println("Sort by amount");
         Arrays.sort(a, new Transaction.HowMuchOrder());
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        for (Transaction a1 : a) {
+            System.out.println(a1);
         }
         System.out.println();
     }

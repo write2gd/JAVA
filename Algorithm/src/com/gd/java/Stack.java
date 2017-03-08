@@ -11,6 +11,7 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author dasg
+ * @param <Item>
  */
 public class Stack<Item> implements Iterable<Item> {
 
@@ -38,7 +39,7 @@ public class Stack<Item> implements Iterable<Item> {
 
     public void push(Item item) {
         Node<Item> oldfirst = first;
-        first = new Node<Item>();
+        first = new Node<>();
         first.item = item;
         first.next = oldfirst;
         n++;
@@ -61,6 +62,7 @@ public class Stack<Item> implements Iterable<Item> {
         return first.item;
     }
 
+    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (Item item : this) {
@@ -70,8 +72,9 @@ public class Stack<Item> implements Iterable<Item> {
         return s.toString();
     }
 
+    @Override
     public Iterator<Item> iterator() {
-        return new ListIterator<Item>(first);
+        return new ListIterator<>(first);
     }
 
     // an iterator, doesn't implement remove() since it's optional
@@ -83,14 +86,17 @@ public class Stack<Item> implements Iterable<Item> {
             current = first;
         }
 
+        @Override
         public boolean hasNext() {
             return current != null;
         }
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
 
+        @Override
         public Item next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
@@ -102,7 +108,7 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Stack<String> stack = new Stack<String>();
+        Stack<String> stack = new Stack<>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             if (!item.equals("-")) {

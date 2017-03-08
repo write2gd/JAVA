@@ -133,8 +133,8 @@ public class Merge {
     }
 
     private static void show(Object[] a) {
-        for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+        for (Object a1 : a) {
+            StdOut.println(a1);
         }
     }
 
