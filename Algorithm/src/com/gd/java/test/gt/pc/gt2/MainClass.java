@@ -1,4 +1,4 @@
-package gt.pc.gt2;
+package com.gd.java.test.gt.pc.gt2;
 
 import java.util.LinkedList;
 import java.util.Queue;
