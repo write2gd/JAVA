@@ -41,5 +41,4 @@ public class Course implements Serializable {
         this.courseName = courseName;
     }
 
- 
 }

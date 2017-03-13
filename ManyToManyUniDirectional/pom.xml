@@ -10,7 +10,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-     <dependencies>
+    <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
         <dependency>
             <groupId>org.apache.derby</groupId>
@@ -37,5 +37,5 @@
             <version>4.3.11.Final</version>
             <type>jar</type>
         </dependency>
-     </dependencies>
+    </dependencies>
 </project>

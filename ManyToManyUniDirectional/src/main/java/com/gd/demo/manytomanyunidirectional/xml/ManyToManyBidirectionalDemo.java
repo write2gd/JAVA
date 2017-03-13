@@ -1,6 +1,5 @@
 package com.gd.demo.manytomanyunidirectional.xml;
 
-
 import java.util.List;
 import java.util.Set;
 

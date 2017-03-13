@@ -16,8 +16,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * @author dasg
  */
 public class HibernateAnnotationUtil {
-    
- private static SessionFactory sessionFactory;
+
+    private static SessionFactory sessionFactory;
     private static ServiceRegistry serviceRegistry;
 
     static {
@@ -45,4 +45,3 @@ public class HibernateAnnotationUtil {
     }
 
 }
-
